@@ -1,4 +1,3 @@
-
 import 'package:fire_app/Core/styling/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -9,17 +8,21 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final double? width;
   final double? height;
+  final TextInputType? type;
   final bool? isPassword;
+  final Color color;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
   const CustomTextField({
     super.key,
     this.hintText,
+    this.type = TextInputType.text,
     this.suffixIcon,
     this.prefixIcon,
     this.width,
     this.isPassword,
     this.height,
+    this.color = Colors.white,
     this.controller,
     this.validator,
   });
@@ -30,6 +33,7 @@ class CustomTextField extends StatelessWidget {
       width: width ?? 331.w,
       height: height,
       child: TextFormField(
+        keyboardType: type,
         controller: controller,
         validator: validator,
         autofocus: false,
@@ -63,7 +67,7 @@ class CustomTextField extends StatelessWidget {
             borderSide: BorderSide(color: Colors.red, width: 1),
           ),
           filled: true,
-          fillColor: const Color(0xffF7F8F9),
+          fillColor: color,
           suffixIcon: suffixIcon,
           prefixIcon: prefixIcon,
         ),
